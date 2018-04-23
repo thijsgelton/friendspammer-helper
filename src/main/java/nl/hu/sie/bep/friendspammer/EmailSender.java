@@ -1,3 +1,5 @@
+package nl.hu.sie.bep.friendspammer;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;

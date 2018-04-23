@@ -1,3 +1,5 @@
+package nl.hu.sie.bep.friendspammer;
+
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
