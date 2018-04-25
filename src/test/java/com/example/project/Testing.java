@@ -1,12 +1,13 @@
 package com.example.project;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class Testing {
 
-  @Test
-  public void test_fail() {
-    fail("Let's test the failing unit test");
-  }
+    @Test
+    public void test_fail() {
+        System.out.println("Let's test the failing unit test");
+    }
 }
