@@ -8,6 +8,6 @@ public class Testing {
 
     @Test
     public void test_fail() {
-        System.out.println("Let's test the failing unit test.");
+        System.out.println("Let's test the failing unit test");
     }
 }
