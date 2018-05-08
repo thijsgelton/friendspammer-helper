@@ -5,9 +5,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.slf4j.Logger;
-
-import java.io.FileInputStream;
-
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;

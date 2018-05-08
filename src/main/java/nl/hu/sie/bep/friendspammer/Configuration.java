@@ -38,7 +38,6 @@ public class Configuration {
     }
 
     private InputStream getConfigStream() throws IOException {
-        System.out.println(PROPERTIES_LOCATION);
         return new FileInputStream(PROPERTIES_LOCATION);
     }
 
