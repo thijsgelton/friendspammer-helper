@@ -10,6 +10,9 @@ import org.slf4j.LoggerFactory;
 
 public class EmailSender {
     private static Logger logger = LoggerFactory.getLogger(EmailSender.class);
+    private static Configuration config = Configuration.getInstance();
+    private static String usernameEmail = config.getProperty("usernameEmail");
+    private static String passwordEmail = config.getProperty("passwordEmail");
 
     private EmailSender() {
         throw new IllegalStateException("Utility class");
@@ -22,14 +25,11 @@ public class EmailSender {
         props.put("mail.smtp.port", "2525");
         props.put("mail.smtp.auth", "true");
 
-        String username = "448840c51451de";
-        String password = "e77b75952e6c91";
-
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
+                        return new PasswordAuthentication(usernameEmail, passwordEmail);
                     }
                 });
         try {
@@ -60,15 +60,11 @@ public class EmailSender {
         props.put("mail.smtp.host", "smtp.mailtrap.io");
         props.put("mail.smtp.port", "2525");
         props.put("mail.smtp.auth", "true");
-
-        String username = "448840c51451de";
-        String password = "e77b75952e6c91";
-
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
+                        return new PasswordAuthentication(usernameEmail, passwordEmail);
                     }
                 });
         try {
