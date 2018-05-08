@@ -5,21 +5,24 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.slf4j.Logger;
+
+import java.io.FileInputStream;
+
 import org.slf4j.LoggerFactory;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MongoSaver {
+    private static Configuration config = Configuration.getInstance();
     private static Logger logger = LoggerFactory.getLogger(MongoSaver.class);
+    private static String userName = config.getProperty("userName");
+    private static String password = config.getProperty("password");
+    private static String database = config.getProperty("database");
+    private static String host = config.getProperty("host");
+    private static Integer port = Integer.parseInt(config.getProperty("port"));
 
     public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
-        String userName = "thijsgelton";
-        String password = "geltonthijs";
-        String database = "friendspammer";
-        String host = "ds247759.mlab.com";
-        Integer port = 47759;
         MongoClient mongoClient = createConnection(userName, password, database, host, port);
         boolean success = true;
         try {
@@ -45,12 +48,6 @@ public class MongoSaver {
 
     public static ArrayList<EmailDTO> getAllEmails() {
         ArrayList<EmailDTO> emails = new ArrayList<>();
-        String userName = "thijsgelton";
-        String password = "geltonthijs";
-        String database = "friendspammer";
-        String host = "ds247759.mlab.com";
-        Integer port = 47759;
-
         MongoClient mongoClient = createConnection(userName, password, database, host, port);
         MongoDatabase db = mongoClient.getDatabase(database);
         MongoCollection<Document> c = db.getCollection("email");
@@ -62,7 +59,7 @@ public class MongoSaver {
             String subject = (String) email.get("subject");
             String text = (String) email.get("text");
             Boolean asHtml = (Boolean) email.get("asHtml");
-			emails.add(new EmailDTO(to, from, subject, text, asHtml));
+            emails.add(new EmailDTO(to, from, subject, text, asHtml));
         }
         return emails;
     }
